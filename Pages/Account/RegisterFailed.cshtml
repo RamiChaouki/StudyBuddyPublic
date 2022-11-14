@@ -1,0 +1,9 @@
+﻿@page
+@model Blog.Pages.RegisterFailedModel
+@{
+    ViewData["Title"] = "Registration Failed";
+}
+
+<h1>@ViewData["Title"]</h1>
+<p>Registration failed with email @Model.Email</p>
+<div><a href="./Login">Click here to login</a></div>

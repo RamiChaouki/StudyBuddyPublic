@@ -1,0 +1,72 @@
+﻿@page
+@model Blog.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<section class="" style="background-color: #eee;">
+    <div class="container  h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-6 my-5">
+                <div class="card rounded-3 text-black">
+                    <div class="row g-0">
+                        <div class="col">
+                            <div class="card-body p-md-5 mx-md-4">
+
+                                <div class="text-center">
+                                    <img src="~/static/images/logo.PNG" alt="logo">
+
+                                </div>
+                                <div class="text-center">
+                                    <h5>Create Account</h5>
+                                </div>
+                                <form method="post">
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" asp-for="Input.Email">Email</label>
+                                        <input type="email" asp-for="Input.Email" class="form-control" />
+                                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" asp-for="Input.Password">Password</label>
+                                        <input type="password" asp-for="Input.Password" class="form-control" />
+                                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" asp-for="Input.ConfirmPassword">Confirm
+                                            Password</label>
+                                        <input type="password" asp-for="Input.ConfirmPassword" class="form-control" />
+                                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="text-center pt-1 mb-5 pb-1">
+                                        <button class="btn  btn-block fa-lg gradient-custom-2 my-3 loginbtn"
+                                            type="submit">Create Account</button>
+
+                                    </div>
+
+                                    <div class="d-flex align-items-center justify-content-center pb-4">
+                                        <p class="mb-0 me-2">Already have an account?</p>
+                                        <a class="btn btn-outline-danger" asp-area="" asp-page="./Login">Sign In</a>
+
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+@section scripts{
+<partial name="_ValidationScriptsPartial"></partial>
+}

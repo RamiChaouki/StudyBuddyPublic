@@ -1,0 +1,37 @@
+﻿@page
+@model StuddyBuddy.Pages.Teacher.CreateForumModel
+@{
+    ViewData["Title"] = "New Forum";
+}
+
+<h1>Create New Forum</h1>
+
+<h4>Forum</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NewForum.Title" class="control-label"></label>
+                <input asp-for="NewForum.Title" class="form-control" />
+                <span asp-validation-for="NewForum.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewForum.Description" class="control-label"></label>
+                <textarea asp-for="NewForum.Description" class="form-control" id="item_description"></textarea>
+                <span asp-validation-for="NewForum.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <select asp-items="Model.CohortsList" asp-for="NewForum.CohortId"></select>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="../User/Forums">Back to Forums</a>
+</div>

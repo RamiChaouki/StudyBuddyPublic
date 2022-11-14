@@ -1,0 +1,110 @@
+﻿@page "{id}"
+@model StuddyBuddy.Pages.Admin.Users.UpdateUserModel
+@{
+  ViewData["Title"] = "Update User";
+  Layout = "~/Pages/Shared/_LayoutAdmin.cshtml";
+}
+@section styles
+{
+<link rel="stylesheet" type="text/css" href="~/css/admin.css" />
+}
+@section ContentSection {
+
+
+<div class="col-md-8 grid-margin stretch-card mx-auto">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title mx-auto my-4" style="text-align: center;">@ViewData["Title"]</h3>
+      <form class="forms-sample" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group row">
+
+          <label asp-for="User.Id" class="col-sm-3 col-form-label">User ID</label>
+          <div class="col-sm-9">
+            <input class="form-control" asp-for="User.Id" value="@Model.User.Id" disabled>
+            <span asp-validation-for="User.Id" class=" text-danger"></span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label asp-for="Input.UserName" class="col-sm-3 col-form-label">Username</label>
+          <div class="col-sm-9">
+            <input class="form-control" asp-for="Input.UserName" value="@Model.User.UserName">
+            <span asp-validation-for="Input.UserName" class=" text-danger"></span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label asp-for="Input.Email" class="col-sm-3 col-form-label"></label>
+          <div class="col-sm-9">
+            <input asp-for="Input.Email" class="form-control" value="@Model.User.Email">
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label asp-for="Input.selectedRole" class="col-sm-3 col-form-label">Role</label>
+          <div class="col-sm-9">
+            <div class="row mt-3">
+              @foreach (var item in Model.RolesList)
+              {
+              @if (@item.Name == "Student")
+              {
+              <div class="col-md-3">
+                <input type="radio" asp-for="Input.selectedRole" value=@item.Name checked="checked" /> @item.Name
+              </div>
+
+              }
+              else
+              {
+              <div class="col-md-3">
+                <input type="radio" asp-for="Input.selectedRole" value=@item.Name /> @item.Name
+              </div>
+              }
+              }
+            </div>
+            <span asp-validation-for="Input.selectedRole" class="text-danger"></span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label asp-for="Input.selectedRole" class="col-sm-3 col-form-label">Confirm Email</label>
+          <div class="col-sm-9">
+            <div class="row mt-3">
+
+              <div class="col-md-4">
+                <input type="radio" asp-for="Input.confirmEmail" value="true" checked="checked" /> Confirm
+                Now
+              </div>
+
+
+              <div class="col-md-3">
+                <input type="radio" asp-for="Input.confirmEmail" value="false" /> Wait Later
+              </div>
+
+
+            </div>
+            <span asp-validation-for="Input.selectedRole" class="text-danger"></span>
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <label asp-for="cohortsList" class="col-sm-3 col-form-label">Cohort</label>
+          <div class="col-sm-9">
+            <select asp-for="Input.CohortId" class="mt-2"
+              asp-items="@(new SelectList(Model.cohortsList, "Id", "CohortName"))">
+              <option value="" selected disabled>-- Please select --</option>
+            </select>
+          </div>
+        </div>
+        <div class="row ">
+          <button type="submit" class="btn btn-gradient-primary btn-rounded btn-fw mx-auto">Update User</button>
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+</div>
+}

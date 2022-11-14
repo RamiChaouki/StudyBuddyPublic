@@ -1,0 +1,10 @@
+﻿@page
+@model StuddyBuddy.Pages.User.NewPostSuccessModel
+@{
+    ViewData["Title"] = "New Post Confirmation";
+}
+
+<h3>@ViewData["Title"]</h3>
+<p>You have successfully created a new Post:</p>
+<p><b>Title: </b>@Model.PostTitle</p>
+<div><a href="./Forums">Forums</a></div>

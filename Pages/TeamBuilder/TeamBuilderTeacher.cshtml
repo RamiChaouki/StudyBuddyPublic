@@ -1,0 +1,30 @@
+﻿@page
+@model StudyBuddy.Pages.TeamBuilder.TeamBuilderTeacherModel
+@{
+    ViewData["Title"]="Team Builder for Teacher";
+}
+
+<div class="container">
+    <form method="Post">
+        <h1>Welcome @User.Identity.Name </h1>
+        <p>Select your team building specifications</p>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <span>I want a team of </span>
+        <select asp-for="Number">
+            <option value="">Select a number</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4">Four</option>
+            <option value="5">Five</option>
+            <option value="6">Six</option>
+        </select>
+        <span> students each for the </span>
+        <select asp-for="Cohort" asp-items="Model.Options">
+            <option value="">Select a cohort</option>
+        </select>
+        <span> cohort!</span>
+        <button type="Submit">Build Team!</button>
+    </form>
+        
+
+</div>

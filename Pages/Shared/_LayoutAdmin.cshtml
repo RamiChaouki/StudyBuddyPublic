@@ -1,0 +1,123 @@
+﻿@inject SignInManager<ApplicationUser> signInManager;
+@inject UserManager<ApplicationUser> userManager;
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/static/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/static/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/static/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="~/static/images/favicon.png" />
+    @RenderSection("styles", true);
+</head>
+
+<body>
+    <div class="container-scroller">
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                <a class="navbar-brand brand-logo h2" asp-page="/Admin/Admin"><i class="mdi mdi-barley me-1"></i>
+                    StudyBuddy
+                </a>
+
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-stretch">
+
+                <div class="search-field d-none d-md-block">
+                    <form class="d-flex align-items-center h-100" action="#">
+
+                    </form>
+                </div>
+                <ul class="navbar-nav navbar-nav-right">
+
+                    <li class="nav-item nav-logout d-none d-lg-block">
+                        <a class="nav-link" asp-page="/Account/Logout">
+                            <i class="mdi mdi-power"></i>
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item nav-profile">
+
+                        <div class="nav-profile-text d-flex flex-column">
+                            <span class="font-weight-bold mb-2 h3">Admin</span>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Admin/Users/ViewUsers">
+                            <span class="menu-title ">Users</span>
+                            <i class="mdi mdi-account-multiple  menu-icon"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Admin/Cohorts/ViewCohorts">
+                            <span class="menu-title ">Cohorts</span>
+                            <i class="mdi mdi-book-open-page-variant  menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-page="/Admin/Forums/ViewForums">
+                            <span class="menu-title">Forums</span>
+                            <i class="mdi mdi-chemical-weapon  menu-icon"></i>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item sidebar-actions">
+                        <span class="nav-link">
+                            <a class="nav-link" asp-page="/Index">
+                                <button class="btn btn-block btn-lg btn-gradient-primary mt-4">Home</button>
+                            </a>
+
+                        </span>
+                    </li>
+                </ul>
+            </nav>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    @RenderSection("ContentSection")
+                    @RenderBody()
+                </div>
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+    <script src="~/static/vendors/js/vendor.bundle.base.js"></script>
+    <script src="vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="~/static/js/off-canvas.js"></script>
+    <script src="~/static/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="~/static/js/dashboard.js"></script>
+    <!-- End custom js for this page-->
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+﻿@page
+@model StudyBuddy.Pages.TeamBuilder.TeamBuilderStudentsModel
+@{
+    ViewData["Title"] = "Team Builder for Students";
+}
+<div class="container bg-light">
+    <form method="Post">
+        <div class="row">
+
+            <div class="d-flex align-items-center flex-column">
+                <div class="row pt-4">
+                    <div class="col-6">
+                        <h3 class="display-5 fw-bold">Welcome, @User.Identity.Name</h3> 
+                    </div>
+                </div>
+                <p class="fs-5 text fw-bold py-2">When is your preferred time to work?</p>
+            </div>
+
+
+                @* <input type="checkbox" name="AreChecked" value="M" checked="@Model.checkedStatus[0]"> Morning
+                    <br>
+                    <input type="checkbox" name="AreChecked" value="A" checked="@Model.checkedStatus[1]"> Afternoon <br>
+                    <input type="checkbox" name="AreChecked" value="E" checked="@Model.checkedStatus[2]"> Evening <br>
+                *@
+
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="form-check form-check-inline ps-0">
+                <input type="checkbox" class="btn-check" id="btn-check-outlined" name="AreChecked" value="M"
+                    checked="@Model.checkedStatus[0]">
+                <label class="btn btn-outline-info fw-bold" for="btn-check-outlined">Morning</label><br>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="checkbox" class="btn-check" id="btn-check-outlined1" name="AreChecked" value="A"
+                    checked="@Model.checkedStatus[1]">
+                <label class="btn btn-outline-warning fw-bold" for="btn-check-outlined1">Afternoon</label><br>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="checkbox" class="btn-check" id="btn-check-outlined2" name="AreChecked" value="E"
+                    checked="@Model.checkedStatus[2]">
+                <label class="btn btn-outline-danger fw-bold" for="btn-check-outlined2">Evening</label><br>
+            </div>
+        </div>
+
+        <p class="fs-4 text p-4 fw-bold text-center">Select students that you would like to work with</p>
+
+        <div class="row align-items-md-stretch mx-5">
+            <div class="col-md-4">
+                <div class="pt-4 text-white rounded-3 containerA">
+                    <div class="row">
+
+                        <h2 class="text-center">Avoid</h2>
+                    </div>
+                    <div class=" px-4 containerD " id="avoidContainer">
+                        @foreach (var classmate in Model.AvoidList)
+                        {
+                                <p class="py-3 ps-4 ms-2 draggable" draggable="true">@classmate.UserName</p>
+                        }
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class=" pt-4 text-white  border rounded-3 containerS ">
+                    <div class="row">
+
+                        <h2 class="text-center">Student List</h2>
+                    </div>
+                    <div class="px-4 containerD" id="listContainer">
+
+                        @foreach (var classmate in Model.UserList)
+                        {
+                            <p class=" py-3 ps-4 ms-2 draggable" draggable="true">@classmate.UserName</p>
+                        }
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="pt-4 text-white  border rounded-3 containerP">
+                    <div class="row">
+
+                        <h2 class="text-center">Prefer</h2>
+                    </div>
+                    <div class="px-4 containerD" id="preferContainer">
+                        @foreach (var classmate in Model.PreferList)
+                        {
+                                <p class="py-3 ps-4 ms-2 draggable" draggable="true">@classmate.UserName</p>
+                        }
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <input id="AvoidPseudoList" type="hidden" name="AvoidPseudoList" value="">
+        <input id="PreferredPseudoList" type="hidden" name="PreferredPseudoList" value=""> @*Code behind binds with
+            value, does not necessarily show it's binded, and the name param must match with the model in the code behind*@
+
+        <br>
+        <button id="submit" class="btn  btn-block fa-lg gradient-custom-2 my-3 loginbtn"> Update Preferences</button>
+    </form>
+</div>
+
+
+@section scripts
+{
+<script type="text/javascript">
+    $(function () {
+        $('#submit').on('click', function (evt) {
+            @* Rallies the students to avoid *@
+            const avoid = document.getElementById("avoidContainer");
+            const avoidInput = document.getElementById("AvoidPseudoList");
+
+            for (const child of avoid.children) {
+                avoidInput.value += " " + child.innerHTML;
+            }
+            console.log(avoidInput);
+
+            @* Rallies the preferred students *@
+            const prefer = document.getElementById("preferContainer");
+            const preferInput = document.getElementById("PreferredPseudoList");
+
+            for (const child of prefer.children) {
+                console.log(child);
+                preferInput.value += " " + child.innerHTML;
+            }
+            console.log(preferInput);
+
+            evt.preventDefault();
+            $.post('', $('form').serialize(), function () {
+
+            });
+        });
+    });
+</script>
+<script type="text/javascript">
+    const draggables = document.querySelectorAll('.draggable')
+    const containers = document.querySelectorAll('.containerD')
+
+    draggables.forEach(draggable => {
+        draggable.addEventListener('dragstart', () => {
+            draggable.classList.add('dragging')
+        })
+
+        draggable.addEventListener('dragend', () => {
+            draggable.classList.remove('dragging')
+        })
+    })
+
+    containers.forEach(container => {
+        container.addEventListener('dragover', e => {
+            e.preventDefault()
+            const afterElement = getDragAfterElement(container, e.clientY)
+            const draggable = document.querySelector('.dragging')
+            if (afterElement == null) {
+                container.appendChild(draggable)
+            } else {
+                container.insertBefore(draggable, afterElement)
+            }
+        })
+    })
+
+    function getDragAfterElement(container, y) {
+        const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')]
+
+        return draggableElements.reduce((closest, child) => {
+            const box = child.getBoundingClientRect()
+            const offset = y - box.top - box.height / 2
+            if (offset < 0 && offset > closest.offset) {
+                return { offset: offset, element: child }
+            } else {
+                return closest
+            }
+        }, { offset: Number.NEGATIVE_INFINITY }).element
+    }
+</script>
+}
+
+</div>

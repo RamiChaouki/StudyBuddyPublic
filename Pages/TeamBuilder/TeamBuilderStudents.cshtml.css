@@ -1,0 +1,98 @@
+
+.draggable
+{
+    height:60px;
+    width: 300px;
+    background-color: azure;
+    color: black;
+    border-radius: 8px;
+    box-shadow: rgb(0 0 0 / 10%) 0px 4px 12px;
+
+}
+
+.containerD 
+{
+    height:800px;
+    overflow-y:scroll;
+    
+}
+
+/* width */
+.containerD::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  #preferContainer::-webkit-scrollbar-track {
+    background:rgb(60, 120, 147);  
+  }
+   
+  /* Handle */
+  #preferContainer::-webkit-scrollbar-thumb {
+    background: rgb(34, 77, 98); 
+  }
+  
+  /* Handle on hover */
+  #preferContainer::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+    /* Track */
+  #listContainer::-webkit-scrollbar-track {
+    background:rgb(27, 119, 98);  
+  }
+   
+  /* Handle */
+  #listContainer::-webkit-scrollbar-thumb {
+    background: rgb(40, 176, 144); 
+  }
+  
+  /* Handle on hover */
+  #listContainer::-webkit-scrollbar-thumb:hover {
+    background: rgb(34, 149, 122);
+  }
+
+  /* Track */
+  #avoidContainer::-webkit-scrollbar-track {
+    background:rgb(197, 124, 82);  
+  }
+   
+  /* Handle */
+  #avoidContainer::-webkit-scrollbar-thumb {
+    background: rgb(179, 98, 51); 
+  }
+  
+  /* Handle on hover */
+  #avoidContainer::-webkit-scrollbar-thumb:hover {
+    background: rgb(188, 108, 61);
+  }
+
+.draggable.dragging {
+    opacity: .5;
+}
+.containerA{
+    
+    
+    background: linear-gradient(to bottom, #ffbf96, #fe7096);
+}
+.containerS{
+    
+    
+    background: linear-gradient(to bottom, #88e0d9, #156659);
+}
+.containerP {
+   
+    background: linear-gradient(to bottom, #90caf9, #047edf 99%);
+    
+}
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fccb90;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    width: 300px;
+    }

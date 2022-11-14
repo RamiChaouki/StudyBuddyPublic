@@ -1,0 +1,13 @@
+﻿@page
+@model StuddyBuddy.Pages.Teacher.NewForumSuccessModel
+@{
+    ViewData["Title"] = "New Forum Confirmation";
+}
+
+<h3>@ViewData["Title"]</h3>
+<p>You have successfully created a new Forum:</p>
+<p><b>Title: </b>@Model.ForumName</p>
+<p><b>Description: </b></p>
+<p>@Model.ForumDescription</p>
+<p><b>CohortId: </b>@Model.CohortId</p>
+<div><a href="../User/Forums">Forums</a></div>

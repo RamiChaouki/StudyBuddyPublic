@@ -1,0 +1,108 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* Login page */
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #fccb90;
+  
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+  
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+  }
+  
+  @media (min-width: 768px) {
+  .gradient-form {
+  height: 100vh !important;
+  }
+  }
+  @media (min-width: 769px) {
+  .gradient-custom-2 {
+  border-top-right-radius: .3rem;
+  border-bottom-right-radius: .3rem;
+  }
+  }
+
+  .loginbtn{
+    width: 100%; 
+    color: white;
+    font-weight: bolder; 
+    height: 40px;
+  }
+
+  /* End Login page */
+
+  .navbtn {
+    font-size: 1.2rem;
+    color: #ee27ad;
+    font-weight: 600;
+    position: relative;
+  
+  }
+
+  .navbtn::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    background:
+    linear-gradient(
+      to right,
+      rgba(255, 0, 0, 1),
+      rgba(255, 0, 180, 1),
+      rgba(0, 100, 200, 1)
+  );
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .3s ease-in-out;
+  }
+  
+  .navbtn:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+  }
+  .navbtn {
+    font-size: 1.2rem;
+    color: #ee27ad;
+    font-weight: 600;
+    position: relative;
+  
+  }
+
+  .post-thumbnail {
+    width: 200px;
+  }
+
+  .thumbContainer {
+    position: relative;
+    width: 300px;
+  }
+  
+  .topright {
+    position: absolute;
+    top: -25px;
+    right: 55px;
+    font-size: 30px;
+  }
+  

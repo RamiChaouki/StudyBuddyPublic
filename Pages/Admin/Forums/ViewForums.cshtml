@@ -1,0 +1,85 @@
+﻿@page
+@model StudyBuddy.Pages.Admin.Forums.ViewForumsModel
+@{
+  ViewData["Title"] = "Forums Table";
+  Layout = "~/Pages/Shared/_LayoutAdmin.cshtml";
+}
+@section styles
+{
+<link rel="stylesheet" type="text/css" href="~/css/admin.css" />
+}
+
+@section ContentSection {
+
+
+<div class="page-header">
+  <h2 class="page-title mx-auto my-2">
+    @ViewData["Title"]
+    <h6>@Model.Message</h6>
+  </h2>
+</div>
+
+
+<div class="col-lg-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>
+              ID
+            </th>
+            <th>
+              Title
+            </th>
+            <th>
+              Description
+            </th>
+            <th>
+              Corhort Name
+            </th>
+            <th>
+              Action
+            </th>
+
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var item in Model.forumsList)
+          {
+          <tr>
+            <td>
+              <div class="idhidden">@item.Id</div>
+            </td>
+            <td>
+              <div class="userhidden">@item.Title</div>
+            </td>
+            <td>
+              <div class="userhidden"> @item.Description</div>
+            </td>
+
+            @if (item.Cohort != null)
+            {
+            <td>@item.Cohort.CohortName</td>
+            }
+            else
+            {
+            <td>"Not assigned yet"</td>
+            }
+
+
+            <th>
+              <form method="POST">
+                <input type="hidden" asp-for="forumId" value="@item.Id" />
+                <input type="submit" class="btn btn-gradient-danger btn-rounded  btn-small" value="Delete" />
+              </form>
+            </th>
+          </tr>
+          }
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+}
